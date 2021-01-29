@@ -28,7 +28,7 @@ form button {
 }
 
 #view {
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,4 +50,5 @@ ul li:hover {
 #priority-selector {
   margin: 0;
   padding: 14px 0;
+  font-weight: bolder;
 }
