@@ -3,8 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My TODO List</title>
-    <script src="utils.js"></script>
+    <title>My TO-DO List</title>
+    <link rel="stylesheet" href="./style.css">
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h2>to do list</h2>
+    </header>
+  <section id="control">
+    <div>
+      <form>
+        <input id="text-input" type="text">
+        <select id="priority-selector">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button id="add-button" type="submit">
+          add task
+        </button>
+     </form>
+    </div>
+  </section>
+  
+  <section id="view">
+    <!-- <div class="todo-container">
+        <div class="todo-priority">
+          1
+        </div>
+        <div class="todo-created-at">
+          2020-06-18 11:51:12
+        </div>
+        <div class="todo-text">
+          the todo text
+        </div>
+    </div> -->
+  </section>
+  <script src="./main.js"></script>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div id="text-input">
+        <input type="text" placeholder="Add your new todo">
+        <button id="add-button">Add</button>
+      <label>
+        <span>sort by-</span>
+        <input type="radio" value="date" name="date">name
+        <input type="radio" value="number" name="number">number
+      </label>
+</div>
+
+<div class="footer">
+    <span>You have <class class="pendingTasks"></class> tasks</span>
+    <button>Clear All</button>
+</div>
+<ul class="todoList"></ul> -->
