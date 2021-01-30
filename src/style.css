@@ -29,7 +29,7 @@ form button {
 
 #view {
   font-size: 1.5rem;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
 }
@@ -37,6 +37,7 @@ form button {
 ul {
   cursor: pointer;
   position: relative;
+  display: block;
   padding: 12px 8px 12px 40px;
   background: #eee;
   font-size: 18px;
