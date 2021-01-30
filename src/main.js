@@ -4,41 +4,29 @@ const textInput = document.getElementById('text-input');
 const addButton = document.getElementById('add-button');
 const prioritySelector = document.getElementById('priority-selector');
 const SECRET_KEY = "I Want To Pass Pre Course";
-const X_MASTER_KEY = "$2b$10$atLrS3nB6eSqL991gnLdCeP/XiNfrrUKw3bRIKDWSqQiMswHExrcG";
+const X_COLLECTION_NAME = "my-todo";
+const X_COLLECTION_ID = "6015af9413b20d48e8bf2d47";
+const X_MASTER_KEY = "$2b$10$WrOeApHlZUPC6t5.IY0qO.YFqEWeEi8VijgcZ2TvsbxSCmFasE2u2";
 
 let todos = [];
 console.log("todos = " + todos);
-try {
- todos = JSON.parse(window.localStorage.getItem("my-todo"));
- 
- //if todos is not empty, make a loop that adds the todos to the ul
- if (todos.length > 0) {
-   let initialView = document.getElementById("view");
-   //loop for each todo in todos
-   for (todo of todos){
-     let todoContainer = document.createElement("div");
-     todoContainer.className = "todo-container";
-     let todoPriority = document.createElement("div");
-     todoPriority.className ="todo-priority";
-     todoPriority.innerHTML = "Priority: " + todo.priority;
-     let todoCreatedAt = document.createElement("div");
-     todoCreatedAt.className = "todo-created-at";
-     todoCreatedAt.innerHTML = formatDate(todo.date);
-     let todoText = document.createElement("div");
-     todoText.className = "todo-text";
-     todoText.innerHTML = todo.text;
-     todoContainer.append(todoPriority, todoText, todoCreatedAt);
-     
-     initialView.append(todoContainer);
-   }
- }
- //todoPriority.innerHTML = "Priority: " + todo.priority;
+// try {
+//   todos = getDataFromJSONBIN();
+//   loadTodos();
+// } catch (error) {
+//   console.log(error);
+//   console.log('trying to read from localstorage');
+  //if we cant read from jsonbin read from local storage
+  try {
+    todos = JSON.parse(window.localStorage.getItem("my-todo"));
+    loadTodos();
+    } catch (error) {
+      console.log(error);
+      todos = [];
+  }
+//}
+console.log('todos contains: '+ JSON.stringify(todos));
 
-} 
-catch (error) {
-  console.log(error);
-  todos = [];
-}
 //event listeners
 addButton.addEventListener('click', addTodo);
 
@@ -120,7 +108,7 @@ async function saveToJSONBIN(data){
   let req = new XMLHttpRequest();
 
   req.onreadystatechange = () => {
-    if (req.readyState == XMLHttpRequest.DONE) {
+    if (req.readyState === XMLHttpRequest.DONE) {
       console.log(req.responseText);
     }
   };
@@ -130,6 +118,47 @@ console.log('data = ' + JSON.stringify(data));
   req.open("POST", "https://api.jsonbin.io/v3/b", true);
   req.setRequestHeader("Content-Type", "application/json");
   req.setRequestHeader("X-Master-Key", X_MASTER_KEY);
-  req.setRequestHeader("collection-id", "my-todo");
+  req.setRequestHeader("X-Collection-Name", X_COLLECTION_NAME);
+  req.setRequestHeader("X-Collection-Id", X_COLLECTION_ID);
   req.send(JSON.stringify(data));
+};
+
+//get data from jsonbin
+async function getDataFromJSONBIN() {
+  let req = new XMLHttpRequest();
+  
+  req.onreadystatechange = () => {
+    if (req.readyState === XMLHttpRequest.DONE) {
+      console.log(req.responseText);
+      return req.responseText;
+    }
+  };
+  
+  req.open("GET", "https://api.jsonbin.io/v3/c/" + X_COLLECTION_ID + "/bins/1", true); 
+  req.setRequestHeader("X-Master-Key", X_MASTER_KEY);
+  req.send();
+};
+
+function loadTodos() {
+  //if todos is not empty, make a loop that adds the todos to the view section
+  if (todos.length > 0) {
+    let initialView = document.getElementById("view");
+    //loop for each todo in todos
+    for (todo of todos){
+      let todoContainer = document.createElement("div");
+      todoContainer.className = "todo-container";
+      let todoPriority = document.createElement("div");
+      todoPriority.className ="todo-priority";
+      todoPriority.innerHTML = "Priority: " + todo.priority;
+      let todoCreatedAt = document.createElement("div");
+      todoCreatedAt.className = "todo-created-at";
+      todoCreatedAt.innerHTML = formatDate(todo.date);
+      let todoText = document.createElement("div");
+      todoText.className = "todo-text";
+      todoText.innerHTML = todo.text;
+      todoContainer.append(todoPriority, todoText, todoCreatedAt);
+      
+      initialView.append(todoContainer);
+    }
+  }
 };
