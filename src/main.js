@@ -7,8 +7,12 @@ const SECRET_KEY = "I Want To Pass Pre Course";
 const X_COLLECTION_NAME = "my-todo";
 const X_COLLECTION_ID = "6015af9413b20d48e8bf2d47";
 const X_MASTER_KEY = "$2b$10$WrOeApHlZUPC6t5.IY0qO.YFqEWeEi8VijgcZ2TvsbxSCmFasE2u2";
-
+let counter = 1;
 let todos = [];
+const sortDate = document.getElementById("sort-button");
+const sortPriority = document.getElementById("sortPriority");
+
+
 console.log("todos = " + todos);
 // try {
 //   todos = getDataFromJSONBIN();
@@ -29,6 +33,8 @@ console.log('todos contains: '+ JSON.stringify(todos));
 
 //event listeners
 addButton.addEventListener('click', addTodo);
+sortDate.addEventListener('click', sortByDate);
+sortPriority.addEventListener('click', sortByPriority);
 
 ////////////////finished loading page
 
@@ -61,7 +67,7 @@ event.preventDefault();
  todoContainer.className = "todo-container";
  let todoPriority = document.createElement("div");
  todoPriority.className ="todo-priority";
- todoPriority.innerHTML = "Priority: " + priority;
+ todoPriority.innerHTML = priority;
  let todoCreatedAt = document.createElement("div");
  todoCreatedAt.className = "todo-created-at";
  todoCreatedAt.innerHTML = formatDate(taskDate);
@@ -69,8 +75,11 @@ event.preventDefault();
  todoText.className = "todo-text";
  todoText.innerHTML = text;
  todoContainer.append(todoPriority, todoText, todoCreatedAt);
- let view = document.getElementById("view");
- view.append(todoContainer);
+ let li =document.createElement("li");
+ li.append(todoContainer);
+ let list = document.getElementById("list");
+ list.append(li);
+ document.getElementById("counter").innerHTML = counter++ + " tasks remaining:";
 
  //todo DIV
  const todoDIV = document.createElement('div');
@@ -87,8 +96,8 @@ event.preventDefault();
 function formatDate(date) {
  //date is stored in UTC, need to convert it to local time
   let d = new Date(date),
-     minutes = '' + (d.getMinutes() + 50),
-     hours = '' + (d.getHours() + 4),
+     minutes = '' + (d.getMinutes()),
+     hours = '' + (d.getHours()),
      month = '' + (d.getMonth() + 1),
      day = '' + d.getDate(),
      year = d.getFullYear();
@@ -142,14 +151,14 @@ async function getDataFromJSONBIN() {
 function loadTodos() {
   //if todos is not empty, make a loop that adds the todos to the view section
   if (todos.length > 0) {
-    let initialView = document.getElementById("view");
+    let initialList = document.getElementById("list");
     //loop for each todo in todos
     for (todo of todos){
       let todoContainer = document.createElement("div");
       todoContainer.className = "todo-container";
       let todoPriority = document.createElement("div");
       todoPriority.className ="todo-priority";
-      todoPriority.innerHTML = "Priority: " + todo.priority;
+      todoPriority.innerHTML = todo.priority;
       let todoCreatedAt = document.createElement("div");
       todoCreatedAt.className = "todo-created-at";
       todoCreatedAt.innerHTML = formatDate(todo.date);
@@ -157,9 +166,48 @@ function loadTodos() {
       todoText.className = "todo-text";
       todoText.innerHTML = todo.text;
       todoContainer.append(todoPriority, todoText, todoCreatedAt);
-      
-      initialView.append(todoContainer);
+      let li = document.createElement("li")
+      li.append(todoContainer);
+      initialList.append(li);
+      document.getElementById("counter").innerHTML = counter++ + " tasks remaining:";
     }
   }
 };
 
+/*function todoCount(add) {
+	if (add) {
+		counter.innerText = ++todoCount;
+	} else if (!add) {
+		counter.innerText = --todoCount;
+	}
+}*/
+
+function myFunction() {
+  let element = document.body;
+  element.classList.toggle("dark-mode");
+}
+
+function sortByDate(){
+  console.log("in sort by date");
+  todos.sort(function (a, b) {
+    return new Date(a.date) - new Date(b.date);
+    });
+
+  console.log("todos = " + JSON.stringify(todos));
+  let ul = document.getElementById("list");
+  ul.innerHTML='';
+  counter = 1;
+  loadTodos();
+};
+
+function sortByPriority(){
+  console.log("in sort by priority");
+  todos.sort(function (a, b) {
+    return a.priority - b.priority;    
+  });
+  console.log("todos = " + JSON.stringify(todos));
+  let ul = document.getElementById("list");
+  ul.innerHTML='';
+  counter = 1;
+  loadTodos();
+};

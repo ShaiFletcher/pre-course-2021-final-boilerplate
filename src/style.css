@@ -73,8 +73,12 @@ ul {
   padding: 0;
 }
 
-ul li:hover {
-  background: #ddd;
+li {
+  padding-right: 200px;
+}
+
+li:hover {
+  background: rgb(243, 138, 138);
 }
 
 .dark-mode {
