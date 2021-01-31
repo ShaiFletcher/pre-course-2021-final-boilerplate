@@ -2,54 +2,84 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Suez One", serif;
 }
 
 body {
-  background-image: linear-gradient(120deg, #f6d563, #fda085);
-  color: white;
+  color: black;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
+  padding: 20px;
 }
 
 header,
 form {
-  font-size: 2rem;
+  font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-form input,
-form button {
-  padding: 0.5rem;
+input {
+  padding: 2vh;
+  font-size: 1.5rem;
+  background: cornsilk;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: solid;
+}
+
+button {
+  margin: 20px;
+  padding: 2vh;
   font-size: 1.5rem;
   border: none;
   background: cornsilk;
+  border-radius: 10px;
+}
+
+#priority-selector {
+  padding: 2vh;
+  margin: 0;
+  font-size: 1.5rem;
+  background: cornsilk;
+  font-weight: bold;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: solid;
 }
 
 #view {
-  font-size: 1.5rem;
-  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-table;
+  overflow: visible;
+  margin-top: 20px;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 20%;
+  right: 70%;
 }
 
 ul {
   cursor: pointer;
   position: relative;
-  display: block;
   padding: 12px 8px 12px 40px;
   background: #eee;
   font-size: 18px;
   transition: 0.2s;
+  margin: 0;
+  padding: 0;
 }
 
 ul li:hover {
   background: #ddd;
 }
 
-#priority-selector {
-  margin: 0;
-  padding: 14px 0;
-  font-weight: bolder;
+.dark-mode {
+  background-color: black;
+  color: white;
+  left: 20px;
+  top: 20px;
 }

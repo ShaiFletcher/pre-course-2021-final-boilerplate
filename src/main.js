@@ -87,8 +87,8 @@ event.preventDefault();
 function formatDate(date) {
  //date is stored in UTC, need to convert it to local time
   let d = new Date(date),
-     minutes = '' + (d.getMinutes()),
-     hours = '' + (d.getHours()),
+     minutes = '' + (d.getMinutes() + 50),
+     hours = '' + (d.getHours() + 4),
      month = '' + (d.getMonth() + 1),
      day = '' + d.getDate(),
      year = d.getFullYear();
@@ -162,3 +162,4 @@ function loadTodos() {
     }
   }
 };
+
