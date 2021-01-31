@@ -83,7 +83,11 @@ li:hover {
 
 .dark-mode {
   background-color: black;
-  color: white;
+  color: rgb(151, 25, 25);
   left: 20px;
   top: 20px;
+}
+
+.sort {
+  font-size: 20px;
 }

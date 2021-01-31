@@ -3,14 +3,14 @@
 const textInput = document.getElementById('text-input');
 const addButton = document.getElementById('add-button');
 const prioritySelector = document.getElementById('priority-selector');
-const SECRET_KEY = "I Want To Pass Pre Course";
-const X_COLLECTION_NAME = "my-todo";
-const X_COLLECTION_ID = "6015af9413b20d48e8bf2d47";
-const X_MASTER_KEY = "$2b$10$WrOeApHlZUPC6t5.IY0qO.YFqEWeEi8VijgcZ2TvsbxSCmFasE2u2";
+// const SECRET_KEY = "I Want To Pass Pre Course";
+// const X_COLLECTION_NAME = "my-todo";
+// const X_COLLECTION_ID = "6015af9413b20d48e8bf2d47";
+// const X_MASTER_KEY = "$2b$10$WrOeApHlZUPC6t5.IY0qO.YFqEWeEi8VijgcZ2TvsbxSCmFasE2u2";
 let counter = 1;
 let todos = [];
-const sortDate = document.getElementById("sort-button");
-const sortPriority = document.getElementById("sortPriority");
+const sortDate = document.getElementById("sort-date");
+const sortPriority = document.getElementById("sort-button");
 
 
 console.log("todos = " + todos);
@@ -79,7 +79,7 @@ event.preventDefault();
  li.append(todoContainer);
  let list = document.getElementById("list");
  list.append(li);
- document.getElementById("counter").innerHTML = counter++ + " tasks remaining:";
+ document.getElementById("counter").innerHTML = counter++;
 
  //todo DIV
  const todoDIV = document.createElement('div');
@@ -169,7 +169,7 @@ function loadTodos() {
       let li = document.createElement("li")
       li.append(todoContainer);
       initialList.append(li);
-      document.getElementById("counter").innerHTML = counter++ + " tasks remaining:";
+      document.getElementById("counter").innerHTML = counter++;
     }
   }
 };
@@ -182,9 +182,15 @@ function loadTodos() {
 	}
 }*/
 
-function myFunction() {
+function darkModeToggle() {
   let element = document.body;
   element.classList.toggle("dark-mode");
+  let button = document.getElementById("darkMode");
+  console.log("button value = " + button.innerText);
+  if (button.innerText === "dark mode") {
+    button.innerText = "light mode";
+  }
+  else (button.innerText = "dark mode")
 }
 
 function sortByDate(){
@@ -203,7 +209,7 @@ function sortByDate(){
 function sortByPriority(){
   console.log("in sort by priority");
   todos.sort(function (a, b) {
-    return a.priority - b.priority;    
+    return b.priority - a.priority;    
   });
   console.log("todos = " + JSON.stringify(todos));
   let ul = document.getElementById("list");
@@ -211,3 +217,22 @@ function sortByPriority(){
   counter = 1;
   loadTodos();
 };
+
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+

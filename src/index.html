@@ -10,7 +10,7 @@
       </style>
   </head>
   <body>
-    <button onclick="myFunction()">dark mode</button>
+    <button id="darkMode" onclick="darkModeToggle()">dark mode</button>
     <header>
       <h2>to do list</h2>
     </header>
@@ -20,29 +20,26 @@
         <input id="text-input" type="text" required="true">
         <select id="priority-selector">
           <option value="1">1</option>
+          <option value="5">5</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
-          <option value="5">5</option>
         </select>
         <button id="add-button" type="submit">
           add task
         </button>
       </form>
       <div id="counter"></div>
-      <div>
+      <div class="sort">
         <br>
         <label for="radio-label">Sort By:</label><br>
-        <input id="sort-button" name="sort" value="date" type="radio" checked="1">date</input><br>
-        <input id="sortPriority" name="sort" value="priority" type="radio" >priority</input>
-      
+        <input id="sort-date" name="sort" value="date" type="radio" checked="1">date</input><br>
+        <input id="sort-button" name="sort" value="priority" type="radio" >priority</input>
       </div>
     </div>
   </section>
-  
   <section id="view">
    <ul id="list">
-     
    </ul>
   </section>
   <script src="./main.js"></script>
