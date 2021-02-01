@@ -3,10 +3,10 @@
 const textInput = document.getElementById('text-input');
 const addButton = document.getElementById('add-button');
 const prioritySelector = document.getElementById('priority-selector');
-// const SECRET_KEY = "I Want To Pass Pre Course";
-// const X_COLLECTION_NAME = "my-todo";
-// const X_COLLECTION_ID = "6015af9413b20d48e8bf2d47";
-// const X_MASTER_KEY = "$2b$10$WrOeApHlZUPC6t5.IY0qO.YFqEWeEi8VijgcZ2TvsbxSCmFasE2u2";
+const SECRET_KEY = "I Want To Pass Pre Course";
+const X_COLLECTION_NAME = "my-todo";
+const X_COLLECTION_ID = "6015af9413b20d48e8bf2d47";
+const X_MASTER_KEY = "$2b$10$WrOeApHlZUPC6t5.IY0qO.YFqEWeEi8VijgcZ2TvsbxSCmFasE2u2";
 let counter = 1;
 let todos = [];
 const sortDate = document.getElementById("sort-date");
@@ -95,7 +95,7 @@ event.preventDefault();
 
 function formatDate(date) {
  //date is stored in UTC, need to convert it to local time
-  let d = new Date(date),
+ let d = new Date(date),
      minutes = '' + (d.getMinutes()),
      hours = '' + (d.getHours()),
      month = '' + (d.getMonth() + 1),
@@ -165,7 +165,7 @@ function loadTodos() {
       let todoText = document.createElement("div");
       todoText.className = "todo-text";
       todoText.innerHTML = todo.text;
-      todoContainer.append(todoPriority, todoCreatedAt, todoText);
+      todoContainer.append( todoCreatedAt, todoPriority, todoText);
       let li = document.createElement("li")
       li.append(todoContainer);
       initialList.append(li);
@@ -174,13 +174,15 @@ function loadTodos() {
   }
 };
 
-/*function todoCount(add) {
-	if (add) {
-		counter.innerText = ++todoCount;
-	} else if (!add) {
-		counter.innerText = --todoCount;
-	}
-}*/
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle("checked");
+  }
+}, false);
+
+
 
 function darkModeToggle() {
   let element = document.body;

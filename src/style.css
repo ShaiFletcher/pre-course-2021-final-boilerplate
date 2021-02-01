@@ -75,14 +75,15 @@ button {
   justify-content: center;
   align-items: center;
   width: 70%;
-  background-color: rgb(69, 43, 180);
+  border-radius: 10px;
+
+  background-color: rgb(143, 120, 247);
 }
 
 ul {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
-  /* background: rgb(112, 215, 247); */
   font-size: 18px;
   transition: 0.2s;
   margin: 0;
@@ -92,25 +93,46 @@ ul {
 }
 li {
   padding-right: 200px;
+  padding-left: 40px;
 }
 li:nth-child(odd) {
-  background: rgb(112, 79, 233);
+  background: rgb(145, 152, 250);
 }
 
 li:hover {
   background: rgb(235, 243, 122);
 }
 
+li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+li.checked::before {
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
 .sort {
   font-size: 18px;
   right: 20px;
   top: 20px;
+  width: 28%;
   color: black;
   background-color: white;
   padding: 0px 2px 5px 8px;
   border-radius: 10px;
   border: 3px solid black;
 }
+
 .dark-mode {
   background-color: rgb(3, 41, 58);
   color: rgb(0, 0, 0);
