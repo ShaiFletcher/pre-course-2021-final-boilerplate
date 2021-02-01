@@ -10,23 +10,31 @@ body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   padding: 20px;
+  background-color: rgb(35, 189, 189);
+}
+
+h2 {
+  background-color: rgb(2, 172, 129);
 }
 
 header,
 form {
   font-size: 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  left: 10%;
+  right: 90%;
 }
 
 input {
   padding: 2vh;
   font-size: 1.5rem;
-  background: cornsilk;
+  background: rgb(117, 247, 214);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border: solid;
+  left: 10%;
+  right: 90%;
 }
 
 button {
@@ -34,7 +42,7 @@ button {
   padding: 2vh;
   font-size: 1.5rem;
   border: none;
-  background: cornsilk;
+  background: rgb(2, 172, 129);
   border-radius: 10px;
 }
 
@@ -42,7 +50,7 @@ button {
   padding: 2vh;
   margin: 0;
   font-size: 1.5rem;
-  background: cornsilk;
+  background: rgb(2, 172, 129);
   font-weight: bold;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -58,36 +66,65 @@ button {
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 20%;
-  right: 70%;
+  left: 5%;
 }
 
 ul {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
-  background: #eee;
+  background: rgb(112, 215, 247);
   font-size: 18px;
   transition: 0.2s;
   margin: 0;
   padding: 0;
+  margin-bottom: 20px;
+  list-style-type: none;
 }
-
 li {
   padding-right: 200px;
 }
-
-li:hover {
-  background: rgb(243, 138, 138);
+li:nth-child(odd) {
+  background: #74eaff;
 }
 
+li:hover {
+  background: rgb(39, 103, 177);
+}
+
+.sort {
+  font-size: 18px;
+  right: 20px;
+  top: 20px;
+  color: black;
+  background-color: rgb(2, 172, 129);
+  padding: 0px 2px 5px px;
+  border-radius: 10px;
+}
 .dark-mode {
-  background-color: black;
-  color: rgb(151, 25, 25);
+  background-color: rgb(6, 59, 42);
+  color: rgb(0, 0, 0);
   left: 20px;
   top: 20px;
 }
 
-.sort {
+#counter {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
   font-size: 20px;
+  right: 10px;
+  background-color: rgb(28, 231, 137);
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
 }
