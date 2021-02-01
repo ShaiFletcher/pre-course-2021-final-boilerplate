@@ -13,7 +13,7 @@ async function getPersistent(key) {
         'X-Master-Key': API_KEY,
         'Content-Type': 'application/json'
       }
-    }
+    });
     //return response.json(); // parses JSON response into native JavaScript objects
   
   

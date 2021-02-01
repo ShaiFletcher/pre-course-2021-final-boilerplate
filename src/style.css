@@ -32,13 +32,9 @@ form {
 }
 
 input {
-  /* padding: 2vh; */
   font-size: 1.5rem;
-  /* background: rgb(117, 247, 214); */
   border-radius: 10px;
   border: solid;
-  /* left: 10%;
-  right: 90%; */
   margin: auto;
   width: 60%;
   border: 3px solid black;
@@ -58,7 +54,6 @@ button {
   padding: 2vh;
   margin: 0;
   font-size: 1.5rem;
-  /* background: rgb(2, 172, 129); */
   font-weight: bold;
   border-radius: 10px;
   border: solid;
@@ -160,4 +155,11 @@ li.checked::before {
   100% {
     background-position: 0px -3000px;
   }
+}
+
+#press {
+  color: rgb(209, 154, 87);
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
 }

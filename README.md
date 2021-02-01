@@ -97,17 +97,19 @@ Note that each commit to `main` branch will trigger a github [action](https://do
 ## Bonus
 
 - jsonbin.io - see explanation above
-- Freestyle - add any feature you desire. Some ideas:
-  - [drag n' drop functionality](https://htmldom.dev/drag-and-drop-element-in-a-list)
-  - Delete + Edit a todo
-  - Undo action
-  - Search and highlight results
-  - Loading spinner for network request
+  (write to JSONBI/io works but no read, saving tasks in a collection so i can get them all together and not need to remember ID)
+- Freestyle -
+  - two colors in list, odd in one color, even in another color
+  - Sort by date/priorty
   - Mark/Unmark todo as done
-  - Something awesome we didn't think of...
-- For added value, you can add jest/puppeteer test to test any bonus feature you implemented
+  - dark mode animation
+  - hideous look
 
 **Add an explanation in `README.md` for each bonus feature you add and a link to any resoure you used**
+all resources i used were from www.w3school- https://www.w3schools.com/js/default.asp
+the background in the dark-mode was from- https://freefrontend.com/css-animated-backgrounds/
+
+a link to my github page- https://github.com/ShaiFletcher
 
 ## Grading policy
 

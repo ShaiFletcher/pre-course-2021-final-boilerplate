@@ -14,13 +14,6 @@ const sortPriority = document.getElementById("sort-button");
 
 
 console.log("todos = " + todos);
-// try {
-//   todos = getDataFromJSONBIN();
-//   loadTodos();
-// } catch (error) {
-//   console.log(error);
-//   console.log('trying to read from localstorage');
-  //if we cant read from jsonbin read from local storage
   try {
     todos = JSON.parse(window.localStorage.getItem("my-todo"));
     loadTodos();
@@ -28,7 +21,7 @@ console.log("todos = " + todos);
       console.log(error);
       todos = [];
   }
-//}
+
 console.log('todos contains: '+ JSON.stringify(todos));
 
 //event listeners
@@ -36,7 +29,7 @@ addButton.addEventListener('click', addTodo);
 sortDate.addEventListener('click', sortByDate);
 sortPriority.addEventListener('click', sortByPriority);
 
-////////////////finished loading page
+///////////////////////////////////////////////////////////////////finished loading page
 
 // function
 function addTodo(event){
@@ -45,7 +38,7 @@ function addTodo(event){
 event.preventDefault();
 
  //get task value
- //////////////////////////check that text isnt empty
+ /////////////////////////////////////////////////////////////check that text isnt empty
  let text = textInput.value;
  let priority = prioritySelector.value;
  let taskDate = new Date();
@@ -93,8 +86,8 @@ event.preventDefault();
 
 }
 
+//formating date from millisecond to a readable date
 function formatDate(date) {
- //date is stored in UTC, need to convert it to local time
  let d = new Date(date),
      minutes = '' + (d.getMinutes()),
      hours = '' + (d.getHours()),
@@ -113,6 +106,7 @@ function formatDate(date) {
 
  return [year, month, day].join('-') + ' ' + [hours, minutes].join(':');
 };
+
 async function saveToJSONBIN(data){
   let req = new XMLHttpRequest();
 
@@ -175,15 +169,15 @@ function loadTodos() {
 };
 
 // Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
+let taskList = document.querySelector('UL');
+taskList.addEventListener("click", function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle("checked");
   }
 }, false);
 
 
-
+//creating dark mode
 function darkModeToggle() {
   let element = document.body;
   element.classList.toggle("dark-mode");
@@ -195,6 +189,8 @@ function darkModeToggle() {
   else (button.innerText = "dark mode")
 }
 
+//creating a sort button
+//date
 function sortByDate(){
   console.log("in sort by date");
   todos.sort(function (a, b) {
@@ -207,7 +203,7 @@ function sortByDate(){
   counter = 1;
   loadTodos();
 };
-
+//priority number
 function sortByPriority(){
   console.log("in sort by priority");
   todos.sort(function (a, b) {
