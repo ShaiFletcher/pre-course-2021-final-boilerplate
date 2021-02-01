@@ -165,7 +165,7 @@ function loadTodos() {
       let todoText = document.createElement("div");
       todoText.className = "todo-text";
       todoText.innerHTML = todo.text;
-      todoContainer.append(todoPriority, todoText, todoCreatedAt);
+      todoContainer.append(todoPriority, todoCreatedAt, todoText);
       let li = document.createElement("li")
       li.append(todoContainer);
       initialList.append(li);

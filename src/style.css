@@ -15,26 +15,34 @@ body {
 
 h2 {
   background-color: rgb(2, 172, 129);
+  margin: auto;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 3px solid #9be435;
+  text-align: center;
 }
 
 header,
 form {
-  font-size: 40px;
+  font-size: 60px;
   display: flex;
   align-items: center;
-  left: 10%;
-  right: 90%;
+  margin-left: 5%;
 }
 
 input {
-  padding: 2vh;
+  /* padding: 2vh; */
   font-size: 1.5rem;
   background: rgb(117, 247, 214);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border: solid;
-  left: 10%;
-  right: 90%;
+  /* left: 10%;
+  right: 90%; */
+  margin: auto;
+  width: 60%;
+  border: 3px solid #9be435;
+  padding: 10px;
 }
 
 button {
@@ -52,8 +60,7 @@ button {
   font-size: 1.5rem;
   background: rgb(2, 172, 129);
   font-weight: bold;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
   border: solid;
 }
 
@@ -62,11 +69,12 @@ button {
   font-weight: bold;
   display: inline-table;
   overflow: visible;
-  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 40px;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 5%;
+  width: 90%;
 }
 
 ul {
@@ -115,16 +123,4 @@ li:hover {
   font-size: 20px;
   right: 10px;
   background-color: rgb(28, 231, 137);
-}
-
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
-
-.close:hover {
-  background-color: #f44336;
-  color: white;
 }
